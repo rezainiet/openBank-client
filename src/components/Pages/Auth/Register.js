@@ -38,7 +38,21 @@ const Register = () => {
     const onSubmit = async (data) => {
         await createUserWithEmailAndPassword(data.email, data.password, { sendEmailVerification });
         await updateProfile({ displayName: data.name });
-        navigate('/')
+        const createdUser = { name: data.name, email: data.email, balance: 0, rBalance: 0, };
+
+        fetch('http://localhost:4000/addUser', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(createdUser)
+        })
+            .then(res => res.json())
+            .then(data => {
+                // console.log(data)
+                navigate('/')
+            })
+
     };
 
     const handleSignUpWIthGoogle = () => {

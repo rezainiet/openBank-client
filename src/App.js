@@ -6,6 +6,7 @@ import MyWallet from './components/Pages/Main/MyWallet/MyWallet';
 import RequireAuth from './components/Pages/Auth/RequireAuth/RequireAuth';
 import Login from './components/Pages/Auth/Login';
 import Register from './components/Pages/Auth/Register';
+import MyAccount from './components/Pages/Main/MyAccount/MyAccount';
 
 function App() {
   return (
@@ -16,7 +17,8 @@ function App() {
         <Route path="/" element={<RequireAuth>
           <Main></Main>
         </RequireAuth>}>
-          <Route index element={<MyWallet />}></Route>
+          <Route index element={<MyAccount />}></Route>
+          <Route path='my-account' element={<MyAccount />}></Route>
           <Route path='my-wallet' element={<MyWallet />}></Route>
         </Route>
       </Routes>

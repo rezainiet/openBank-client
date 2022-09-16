@@ -1,12 +1,24 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
-import { Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
+import auth from '../../../firebase.init';
 
 const Main = () => {
 
+
+    const handleLogOut = () => {
+        signOut(auth);
+    }
+
     const navItems = <>
 
-        <li><a>Navbar Item 2</a></li>
         <li>
+            <Link to='/my-account'>Dashboard</Link>
+        </li>
+        <li>
+            <Link to='/my-wallet'>My Wallet</Link>
+        </li>
+        <li onClick={handleLogOut}>
             <p className='text-green-500'>LogOut</p>
         </li>
     </>
